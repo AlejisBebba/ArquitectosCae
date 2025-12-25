@@ -1,7 +1,8 @@
 FROM php:8.2-apache
 
-# Instalar extensiones necesarias
+# Instalar extensiones necesarias (incluida libpq-dev para PostgreSQL)
 RUN apt-get update && apt-get install -y \
+    libpq-dev \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
@@ -10,14 +11,17 @@ RUN apt-get update && apt-get install -y \
     git \
     curl
 
-RUN docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
+# Instalar extensiones de PHP (incluida pdo_pgsql)
+RUN docker-php-ext-install pdo pdo_pgsql pdo_mysql mbstring exif pcntl bcmath gd
 
 # Habilitar mod_rewrite
 RUN a2enmod rewrite
+
 # Configurar Apache para que apunte a la carpeta /public de Laravel
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
 # Copiar proyecto
 WORKDIR /var/www/html
 COPY . .
@@ -38,4 +42,6 @@ ENV APP_ENV=production
 ENV APP_DEBUG=false
 
 EXPOSE 80
-CMD php artisan migrate --force && apache2-foreground
+
+# Comando final: Limpia caché, corre tablas y enciende el servidor
+CMD php artisan config:clear && php artisan view:clear && php artisan migrate --force && apache2-foreground
