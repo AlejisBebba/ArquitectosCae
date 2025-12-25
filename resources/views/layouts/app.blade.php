@@ -6,8 +6,9 @@
     <title>@yield('title', 'Colegio de Arquitectos del Oro')</title>
 
     {{-- Tailwind + JS --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+{{-- Tailwind + JS --}}
+<link rel="stylesheet" href="{{ asset('build/assets/app.css') }}">
+<script src="{{ asset('build/assets/app.js') }}" defer></script>
     {{-- Alpine --}}
     <script src="//unpkg.com/alpinejs" defer></script>
 
