@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Colegio de Arquitectos del Oro')</title>
 
-    {{-- Tailwind + JS --}}
-{{-- Tailwind + JS --}}
-<link rel="stylesheet" href="{{ asset('build/assets/app.css') }}">
-<script src="{{ asset('build/assets/app.js') }}" defer></script>
+    {{-- Diseño Directo (CDN): Esto salta el error de Vite y Asset --}}
+    <script src="https://cdn.tailwindcss.com"></script>
     {{-- Alpine --}}
     <script src="//unpkg.com/alpinejs" defer></script>
 
