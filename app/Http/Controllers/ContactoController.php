@@ -16,6 +16,6 @@ class ContactoController extends Controller
     ]);
 
     // Por ahora, solo retornaremos un mensaje de éxito
-    return back()->with('success', '¡Gracias! Tu mensaje ha sido enviado.');
+    return back()->with('success', '¡Gracias! Tu mensaje ha sido enviado correctamente.');
 }
 }
