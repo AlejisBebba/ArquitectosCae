@@ -25,6 +25,8 @@ Route::put('/clientes/{cliente}', [ClienteController::class, 'actualizar'])->nam
 Route::delete('/clientes/{cliente}', [ClienteController::class, 'eliminar'])->name('clientes.eliminar');
 
 Route::get('/saludo', [SaludoController::class, 'mostrar'])->name('saludo');
-Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto.enviar');
+
 Route::get('/admin/mensajes', [App\Http\Controllers\ContactoController::class, 'admin'])->name('admin.mensajes');
 Route::get('/galeria', [GaleriaController::class, 'index'])->name('galeria');
+// Ruta para que el formulario de la galería pueda enviar las fotos
+Route::post('/galeria', [GaleriaController::class, 'guardar'])->name('galeria.guardar');
