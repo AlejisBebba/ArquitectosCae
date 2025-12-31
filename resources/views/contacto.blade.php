@@ -41,9 +41,9 @@
     </div>
 
     <div class="mb-4">
-        <label class="block text-gray-700 font-bold mb-2" for="email">Correo electrónico</label>
-        <input class="w-full px-3 py-2 border rounded text-black" type="email" id="email" name="email" value="{{ old('email') }}" required>
-    </div>
+    <label class="block text-gray-700 font-bold mb-2" for="email">Correo electrónico</label>
+    <input class="w-full px-3 py-2 border rounded text-black" type="email" id="email" name="correo" value="{{ old('correo') }}" required>
+</div>
 
     <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2" for="mensaje">Mensaje</label>
