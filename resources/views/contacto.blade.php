@@ -33,27 +33,27 @@
 
         {{-- FORMULARIO --}}
         <form class="bg-white rounded-lg shadow p-8" method="POST" action="{{ route('contacto.enviar') }}">
-            @csrf
+    @csrf
 
-            <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="nombre">Nombre</label>
-                <input class="w-full px-3 py-2 border rounded" type="text" id="nombre" name="nombre" value="{{ old('nombre') }}" required>
-            </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="nombre">Nombre</label>
+        <input class="w-full px-3 py-2 border rounded text-black" type="text" id="nombre" name="nombre" value="{{ old('nombre') }}" required>
+    </div>
 
-            <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="email">Correo electrónico</label>
-                <input class="w-full px-3 py-2 border rounded" type="email" id="email" name="email" value="{{ old('email') }}" required>
-            </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="email">Correo electrónico</label>
+        <input class="w-full px-3 py-2 border rounded text-black" type="email" id="email" name="email" value="{{ old('email') }}" required>
+    </div>
 
-            <div class="mb-4">
-                <label class="block text-gray-700 font-bold mb-2" for="mensaje">Mensaje</label>
-                <textarea class="w-full px-3 py-2 border rounded" id="mensaje" name="mensaje" rows="4" required>{{ old('mensaje') }}</textarea>
-            </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="mensaje">Mensaje</label>
+        <textarea class="w-full px-3 py-2 border rounded text-black" id="mensaje" name="mensaje" rows="4" required>{{ old('mensaje') }}</textarea>
+    </div>
 
-            <button class="bg-[#D7A74B] text-[#153411] font-bold px-6 py-2 rounded hover:bg-yellow-600 transition" type="submit">
-                Enviar
-            </button>
-        </form>
+    <button class="bg-[#D7A74B] text-[#153411] font-bold px-6 py-2 rounded hover:bg-yellow-600 transition" type="submit">
+        Enviar
+    </button>
+</form>
 
         {{-- INFORMACIÓN DE CONTACTO --}}
         <div class="mt-8 text-center">
