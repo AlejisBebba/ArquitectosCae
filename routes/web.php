@@ -10,6 +10,8 @@ Route::view('/acerca', 'acerca')->name('acerca');
 Route::view('/servicios', 'servicios')->name('servicios');
 Route::view('/valores', 'valores')->name('valores');
 Route::get('/galeria', [App\Http\Controllers\GaleriaController::class, 'index'])->name('galeria');
+// Esta línea le enseña a Laravel a dónde guardar las fotos nuevas
+Route::post('/galeria', [App\Http\Controllers\GaleriaController::class, 'store'])->name('galeria.store');
 Route::get('/contacto', [App\Http\Controllers\ContactoController::class, 'index'])->name('contacto');
 
 // --- RUTAS DE ADMINISTRACIÓN (Protegidas) ---
