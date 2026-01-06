@@ -7,18 +7,22 @@
     <div class="container mx-auto px-4">
         <h1 class="text-4xl font-bold mb-8 text-gold">Galería de Imágenes</h1>
         
+        {{-- SOLO EL JEFE VERÁ ESTO SI ESTÁ LOGUEADO --}}
+        @auth
         <div class="max-w-xl mx-auto mb-12 bg-[#1e4720] border-2 border-gold p-6 rounded-lg shadow-xl">
             <h2 class="text-gold text-xl mb-4 font-semibold">Panel de Administración: Cargar Obra</h2>
-            <form action="{{ route('galeria.guardar') }}" method="POST" enctype="multipart/form-data" class="flex flex-col gap-4">
+            <form action="{{ route('galeria.store') }}" method="POST" enctype="multipart/form-data" class="flex flex-col gap-4">
                 @csrf
-                <input type="file" name="imagen" required class="text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:bg-gold file:text-black hover:file:bg-yellow-600 cursor-pointer">
+                <input type="file" name="foto" required class="text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:bg-gold file:text-black hover:file:bg-yellow-600 cursor-pointer">
                 <input type="text" name="titulo" placeholder="Nombre de la obra" class="p-2 rounded bg-white text-black border border-gold focus:outline-none focus:ring-2 focus:ring-gold">
                 <button type="submit" class="bg-gold text-black font-bold py-2 px-6 rounded hover:bg-yellow-600 transition duration-300">
                     Subir al Portafolio
                 </button>
             </form>
         </div>
+        @endauth
 
+        {{-- TODO EL PÚBLICO VERÁ LAS IMÁGENES --}}
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             @forelse($imagenes as $img)
                 <div class="bg-[#1e4720] rounded-lg shadow-lg p-4 flex flex-col items-center transform transition duration-300 hover:scale-105 hover:shadow-2xl border border-gold">
