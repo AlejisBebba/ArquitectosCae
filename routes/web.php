@@ -5,6 +5,8 @@ use App\Http\Controllers\SaludoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\ContactoController;
+use Database\Seeders\UsuarioAdminSeeder;
+use Illuminate\Support\Facades\Artisan;
 
 // --- RUTAS PÚBLICAS (Todos pueden ver) ---
 Route::view('/', 'paginaprincipal')->name('inicio');
@@ -31,3 +33,8 @@ Route::middleware(['auth'])->group(function () {
 
 // Ruta especial para procesar el formulario de contacto (pública)
 Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto.enviar');
+// Esta ruta es solo para crear al jefe, la borraremos después
+Route::get('/crear-admin-secreto', function () {
+    Artisan::call('db:seed', ['--class' => 'UsuarioAdminSeeder']);
+    return "¡Usuario Administrador creado con éxito en Render!";
+});
