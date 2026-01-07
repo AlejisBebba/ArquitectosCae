@@ -32,7 +32,7 @@
         @endif
 
         {{-- FORMULARIO --}}
-        <form class="bg-white rounded-lg shadow p-8" method="POST" action="{{ route('contacto.enviar') }}">
+<form class="bg-white rounded-lg shadow p-8" method="POST" action="#">    
     @csrf
 
     <div class="mb-4">

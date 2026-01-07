@@ -13,7 +13,8 @@ Route::get('/galeria', [App\Http\Controllers\GaleriaController::class, 'index'])
 // Esta línea le enseña a Laravel a dónde guardar las fotos nuevas
 Route::post('/galeria', [App\Http\Controllers\GaleriaController::class, 'store'])->name('galeria.store');
 Route::get('/contacto', [App\Http\Controllers\ContactoController::class, 'index'])->name('contacto');
-
+// AÑADE ESTA LÍNEA AQUÍ PARA ARREGLAR EL ERROR ROJO:
+Route::post('/contacto', [App\Http\Controllers\ContactoController::class, 'enviar'])->name('contacto.enviar');
 // --- RUTAS DE ADMINISTRACIÓN (Protegidas) ---
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -43,4 +44,11 @@ Route::get('/crear-admin-secreto', function () {
         ]
     );
     return "¡Usuario Administrador creado con éxito!";
+}); 
+// RUTA PARA LIMPIAR TODO EL SISTEMA
+Route::get('/limpiar-todo', function () {
+    Artisan::call('route:clear');
+    Artisan::call('config:clear');
+    Artisan::call('view:clear');
+    return "¡Sistema optimizado y rutas actualizadas con éxito!";
 });
