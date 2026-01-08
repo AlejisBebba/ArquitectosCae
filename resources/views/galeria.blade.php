@@ -27,7 +27,9 @@
             @forelse($imagenes as $img)
                 <div class="bg-[#1e4720] rounded-lg shadow-lg p-4 flex flex-col items-center transform transition duration-300 hover:scale-105 hover:shadow-2xl border border-gold">
                     <img src="{{ asset('imagenes/' . $img['archivo']) }}" alt="{{ $img['nombre'] }}" class="rounded-lg mb-4 object-cover w-full h-64">
-                    <span class="text-gold font-semibold">{{ $img['nombre'] }}</span>
+                    <span class="text-gold font-semibold">
+    {{ str_replace('img.', '', $img['titulo']) }}
+</span>
                 </div>
             @empty
                 <div class="col-span-3 text-white">No hay imágenes en la galería.</div>
